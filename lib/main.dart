@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(Quizzler());
+void main() => runApp(const Quizzler());
 
 class Quizzler extends StatelessWidget {
+  const Quizzler({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey.shade900,
-        body: SafeArea(
+        body: const SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: QuizPage(),
@@ -20,8 +22,10 @@ class Quizzler extends StatelessWidget {
 }
 
 class QuizPage extends StatefulWidget {
+  const QuizPage({super.key});
+
   @override
-  _QuizPageState createState() => _QuizPageState();
+  State<QuizPage> createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
@@ -31,7 +35,7 @@ class _QuizPageState extends State<QuizPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Expanded(
+        const Expanded(
           flex: 5,
           child: Padding(
             padding: EdgeInsets.all(10.0),
@@ -49,35 +53,45 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: TextButton(
-              child: Text(
-                'True',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                ),
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.green,
               ),
-              onPressed: () {
-                //The user picked true.
-              },
+              child: TextButton(
+                child: const Text(
+                  'True',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
+                ),
+                onPressed: () {
+                  //The user picked true.
+                },
+              ),
             ),
           ),
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: TextButton(
-              child: Text(
-                'False',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.red,
               ),
-              onPressed: () {
-                //The user picked false.
-              },
+              child: TextButton(
+                child: const Text(
+                  'False',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  //The user picked false.
+                },
+              ),
             ),
           ),
         ),
