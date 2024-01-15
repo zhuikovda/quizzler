@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/questionBrain.dart';
 
-QuestionBrain quizBrain = QuestionBrain();
-
 void main() => runApp(const Quizzler());
 
 class Quizzler extends StatelessWidget {
@@ -33,8 +31,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   final List<Widget> _score = [];
-
-
+  QuestionBrain quizBrain = QuestionBrain();
 
   int questionNumber = 0;
 
@@ -69,7 +66,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-               quizBrain.questionBank[questionNumber].questionText!,
+                quizBrain.questionBank[questionNumber].questionText!,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
