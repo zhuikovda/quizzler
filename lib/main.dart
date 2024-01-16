@@ -33,16 +33,12 @@ class _QuizPageState extends State<QuizPage> {
   final List<Widget> _score = [];
   QuestionBrain quizBrain = QuestionBrain();
 
-  int questionNumber = 0;
 
-  void _indexQuestion() {
-    questionNumber == quizBrain.questionBank.length - 1
-        ? questionNumber = 0
-        : questionNumber++;
-  }
+
+
 
   void scoreAnswer(bool arg) {
-    bool correctAnswer = quizBrain.questionBank[questionNumber].questionAnswer!;
+    bool correctAnswer = quizBrain.getQuestionAnswer();
     correctAnswer == arg
         ? _score.add(const Icon(
             Icons.check,
@@ -66,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questionBank[questionNumber].questionText!,
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
@@ -96,7 +92,7 @@ class _QuizPageState extends State<QuizPage> {
                   scoreAnswer(true);
                   setState(
                     () {
-                      _indexQuestion();
+                      quizBrain.indexQuestion();
                     },
                   );
                 },
@@ -123,7 +119,7 @@ class _QuizPageState extends State<QuizPage> {
                   scoreAnswer(false);
                   setState(
                     () {
-                      _indexQuestion();
+                      quizBrain.indexQuestion();
                     },
                   );
                 },
